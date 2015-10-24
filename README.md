@@ -1,2 +1,2 @@
 # yo.zsh
-Sand Yo! from zsh
+Send Yo! from Zsh
