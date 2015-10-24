@@ -61,15 +61,15 @@ function sendyo() {
 
   for username in $usernames; do
     # Prepare request
+    request_command="curl --silent --write-out %{http_code} --output ${tmpfile} -d api_token=$YO_API_TOKEN -d username=$username $YO_API_URL"
     if [[ -n "$location" ]]; then
       message="Yo Location! $location $username"
-      request_command="curl --silent --write-out %{http_code} --output ${tmpfile} -d api_token=$YO_API_TOKEN -d username=$username $YO_API_URL -d 'location=$location'"
+      request_command="$request_command -d 'location=$location'"
     elif [[ -n "$url" ]]; then
       message="Yo Link! $url $username"
-      request_command="curl --silent --write-out %{http_code} --output ${tmpfile} -d api_token=$YO_API_TOKEN -d username=$username $YO_API_URL -d 'link=$url'"
+      request_command="$request_command -d 'link=$url'"
     else
       message="Yo! $username"
-      request_command="curl --silent --write-out %{http_code} --output ${tmpfile} -d api_token=$YO_API_TOKEN -d username=$username $YO_API_URL"
     fi
 
     # Send request
