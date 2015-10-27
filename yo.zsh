@@ -55,7 +55,7 @@ function sendyo() {
   fi
 
   for username in "$@"; do
-    usernames+=($(echo $1 | tr '[:lower:]' '[:upper:]'))
+    usernames+=($(echo $username | tr '[:lower:]' '[:upper:]'))
   done
 
   # Send
